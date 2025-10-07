@@ -4,7 +4,6 @@ const Home = () => {
   return (
     <div className="relative flex flex-col justify-center items-center min-h-screen bg-white text-[#1a1a1a] px-8 py-12 overflow-hidden">
       
-      {/* 🎨 Background Doodles */}
       <img
         src="/assets/doodle-1.png"
         alt="doodle1"
@@ -49,12 +48,7 @@ const Home = () => {
         Just login and start your productivity journey today!
       </p>
 
-      <a
-        href="/login"
-        className="relative z-10 px-8 py-3 bg-[#1a1a1a] text-white rounded-md font-semibold hover:scale-105 transition-all"
-      >
-        Login & Start
-      </a>
+      <p className="text-xl text-[#f396a0] font-bold mb-8 text-center max-w-md relative z-10">Capture ideas. Anytime. Anywhere.</p>
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl relative z-10">
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition transform hover:scale-105">
