@@ -36,9 +36,9 @@ const Signup = () => {
 
 
   return (
-    <div className="flex min-h-screen bg-white text-[#1a1a1a]">
+    <div className="flex h-screen bg-white text-[#1a1a1a]">
 
-      <div className="w-1/2 min-h-screen hidden md:flex items-center justify-center">
+      <div className="w-1/2 h-screen hidden md:flex items-center justify-center">
         <img
           src="/assets/signup-img.png"
           alt="Notes App Theme"
