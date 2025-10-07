@@ -8,6 +8,14 @@ const Create = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if(!token){
+        navigate("/login", {replace: true});
+    }
+    },[token, navigate]);
+
   const editingNote = location.state?.note;
   
   const [note, setNote] = useState({

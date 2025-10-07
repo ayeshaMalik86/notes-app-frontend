@@ -19,7 +19,7 @@ const Login = () => {
             localStorage.setItem("userInfo", JSON.stringify(data));
             setLoading(false);
     
-            window.location.href = "/";
+            window.location.href = "/dashboard";
         } catch (err) {
             setLoading(false);
             setError(err.response?.data?.message || err.message);

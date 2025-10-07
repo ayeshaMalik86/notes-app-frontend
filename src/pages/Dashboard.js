@@ -10,6 +10,14 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    const token = localStorage.getItem("token");
+    
+    useEffect(() => {
+        if(!token){
+            navigate("/login", {replace: true});
+        }
+    },[token, navigate]);
+
     const fetchNotes = async () => {
         try{
             setLoading(true);
