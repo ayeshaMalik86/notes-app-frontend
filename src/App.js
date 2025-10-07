@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 
 function AppContent() {
   const location = useLocation();
-  const hideHeaderOn = ["/login", "/signup"];
+  const hideHeaderOn = ["/login", "/signup", "/dashboard"];
   const showHeader = !hideHeaderOn.includes(location.pathname);
 
   return (

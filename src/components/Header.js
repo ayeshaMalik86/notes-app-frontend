@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ searchTerm = "", onSearchChange = null, showSearch = false }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -43,7 +43,29 @@ const Header = () => {
 
   return (
     <header className="w-full bg-white border-b border-gray-200 shadow-lg flex justify-between items-center px-6 py-4">
-      <div className="text-2xl font-bold text-gray-800">Notes</div>
+      <div className="text-2xl font-bold text-gray-800 cursor-pointer" onClick={() => navigate("/")}>Notes</div>
+
+      {showSearch && onSearchChange && (
+        <div className="flex-1 max-w-md mx-8">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search notes by title, content, or tags..."
+              value={searchTerm}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => onSearchChange("")}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       <div className="relative">
         {user ? (

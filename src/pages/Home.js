@@ -40,23 +40,6 @@ const Home = () => {
         alt="doodle7"
         className="absolute top-0 right-1/3 w-28 pointer-events-none animate-float"
       />
-      {/* <img
-        src="/assets/doodle-8.png"
-        alt="doodle8"
-        className="absolute bottom-10 left-1/4 w-24 rotate-6 pointer-events-none"
-      />
-      <img
-        src="/assets/doodle-9.png"
-        alt="doodle9"
-        className="absolute top-1/3 left-1/2 w-36 -rotate-6 pointer-events-none"
-      />
-      <img
-        src="/assets/doodle-10.png"
-        alt="doodle10"
-        className="absolute bottom-1/3 right-1/2 w-32 rotate-3 pointer-events-none"
-      /> */}
-
-      {/* 🌟 Main Content */}
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center tracking-wide relative z-10">
         Welcome to Our Notes App
       </h1>
@@ -73,7 +56,6 @@ const Home = () => {
         Login & Start
       </a>
 
-      {/* 🗒️ Feature Cards */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl relative z-10">
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition transform hover:scale-105">
           <h2 className="text-xl font-semibold mb-2">Quick Notes</h2>

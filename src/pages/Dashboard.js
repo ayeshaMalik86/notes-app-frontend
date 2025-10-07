@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NoteCard from "../components/NoteCard";
+import Header from "../components/Header";
 import API from "../api";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -8,6 +9,7 @@ const Dashboard = () => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const token = localStorage.getItem("token");
 
@@ -17,12 +19,13 @@ const Dashboard = () => {
     }
   }, [token, navigate]);
 
-  const fetchNotes = async () => {
+  const fetchNotes = async (search = "") => {
     try {
       setLoading(true);
       setError(null);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const res = await API.get("/notes");
+      const url = search ? `/notes?search=${encodeURIComponent(search)}` : "/notes";
+      const res = await API.get(url);
       setNotes(res.data);
     } catch (err) {
       console.error("Error fetching notes:", err);
@@ -35,6 +38,15 @@ const Dashboard = () => {
   useEffect(() => {
     fetchNotes();
   }, []);
+
+  // Debounced search effect
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      fetchNotes(searchTerm);
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
 
   const handleEdit = (note) => {
     navigate("/create", { state: { note } });
@@ -52,7 +64,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="relative p-6 min-h-screen bg-white text-[#1a1a1a] overflow-hidden">
+    <>
+      <Header 
+        searchTerm={searchTerm} 
+        onSearchChange={setSearchTerm} 
+        showSearch={true} 
+      />
+      <div className="relative p-6 min-h-screen bg-white text-[#1a1a1a] overflow-hidden">
       <img
         src="/assets/doodle-1.png"
         alt="doodle1"
@@ -115,6 +133,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

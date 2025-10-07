@@ -7,7 +7,7 @@ const NoteCard = ({ note, onEdit, onDelete }) => {
     : (note.tags || "").split(",").map(tag => tag.trim()).filter(Boolean);
 
   return (
-    <div className="w-full bg-white text-[#1a1a1a] rounded-2xl p-6 shadow-lg relative">
+    <div className="w-full border border-black bg-white text-[#1a1a1a] rounded-2xl p-6 shadow-lg relative">
       <div className="absolute top-4 right-4 flex gap-2">
         <PencilIcon
           className="w-6 h-6 text-gray-500 cursor-pointer hover:scale-105 transition-transform"
