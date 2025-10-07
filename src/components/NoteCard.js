@@ -10,17 +10,14 @@ const NoteCard = ({ note, onEdit, onDelete }) => {
     <div className="w-full bg-white text-[#1a1a1a] rounded-2xl p-6 shadow-lg relative">
       <div className="absolute top-4 right-4 flex gap-2">
         <PencilIcon
-          className="w-6 h-6 text-blue-500 cursor-pointer hover:text-blue-700"
+          className="w-6 h-6 text-gray-500 cursor-pointer hover:scale-105 transition-transform"
           onClick={() => onEdit(note)}
         />
         <TrashIcon
-          className="w-6 h-6 text-red-500 cursor-pointer hover:text-red-700"
+          className="w-6 h-6 text-gray-500 cursor-pointer hover:scale-105 transition-transform"
           onClick={() => onDelete(note)}
         />
       </div>
-
-      <h2 className="text-2xl font-bold mb-4">Your Note</h2>
-
       {note.title || note.content || tags.length > 0 ? (
         <div className="space-y-3">
           <h3 className="text-xl font-semibold border-b border-gray-600 pb-2">
