@@ -7,7 +7,7 @@ const NoteForm = ({ note, setNote, handleSubmit }) => {
   };
 
   return (
-    <div className="w-full md:w-1/2 bg-white text-[#1a1a1a] rounded-2xl p-6 shadow-lg mb-10 md:mb-0 md:mr-8">
+    <div className="w-full bg-white text-[#1a1a1a] rounded-2xl p-6 shadow-lg mb-10 md:mb-0 md:mr-8">
       <h2 className="text-2xl font-bold mb-6">Create a Note</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

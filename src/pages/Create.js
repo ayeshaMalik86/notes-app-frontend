@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NoteForm from "../components/NoteForm";
 import NoteCard from "../components/NoteCard";
 import API from "../api";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Create = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const editingNote = location.state?.note;
+  
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -13,6 +19,12 @@ const Create = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  useEffect(() => {
+    if(editingNote){
+      setNote(editingNote);
+    }
+  }, [editingNote]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -20,18 +32,24 @@ const Create = () => {
     setSuccess(false);
 
     try{
-      const {data} = await API.post("/notes", note);
-      setSuccess(true);
-      setNote({title: "", content: "", tags: ""});
-      console.log("Note saved:", data);
-      window.alert("Note saved successfully");
-    } catch (err) {
-      setError(err.response?.data?.message || err.message);
-      console.error("Error saving note:", err);
-      window.alert(`Error: ${err.response?.data?.message || err.message}`);
-    } finally {
-      setLoading(false);
-    }
+      let data;
+      if(editingNote){
+        const {data: updatedNote} = await API.put(`/notes/${editingNote._id}`, note);
+        data = updatedNote;
+        window.alert("Note updated successfully");
+      } else {
+        const {data: createdNote} = await API.post("/notes", note);
+        data = createdNote;
+        window.alert("Note created successfully");
+      }
+      navigate("/dashboard", {state: {note: data}});
+      }catch (err) {
+        setError(err.response?.data?.message || err.message);
+        window.alert(`Error: ${err.response?.data?.message || err.message}`);
+      } finally {
+        setLoading(false);
+      }
+    
   };
 
   return (
