@@ -51,7 +51,6 @@ const Header = ({ searchTerm = "", onSearchChange = null, showSearch = false }) 
           Notes
         </div>
 
-        {/* Desktop Search Bar - Hidden on mobile */}
         {showSearch && onSearchChange && (
           <div className="hidden md:flex flex-1 max-w-md mx-4 lg:mx-8">
             <div className="relative w-full">
@@ -75,9 +74,7 @@ const Header = ({ searchTerm = "", onSearchChange = null, showSearch = false }) 
           </div>
         )}
 
-        {/* Right side - Search toggle (mobile) and User menu */}
         <div className="flex items-center space-x-2 sm:space-x-4">
-          {/* Mobile Search Toggle */}
           {showSearch && onSearchChange && (
             <button
               onClick={toggleSearch}
@@ -92,7 +89,6 @@ const Header = ({ searchTerm = "", onSearchChange = null, showSearch = false }) 
             </button>
           )}
 
-          {/* User Section */}
           <div className="relative">
             {user ? (
               <>
@@ -143,7 +139,6 @@ const Header = ({ searchTerm = "", onSearchChange = null, showSearch = false }) 
         </div>
       </div>
 
-      {/* Mobile Search Bar - Slides down when toggled */}
       {showSearch && onSearchChange && searchOpen && (
         <div className="md:hidden px-4 pb-4 animate-slideDown">
           <div className="relative w-full">

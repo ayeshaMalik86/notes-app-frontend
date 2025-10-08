@@ -39,7 +39,6 @@ const Dashboard = () => {
     fetchNotes();
   }, []);
 
-  // Debounced search effect
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       fetchNotes(searchTerm);
